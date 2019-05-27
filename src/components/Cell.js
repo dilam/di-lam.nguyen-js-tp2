@@ -12,6 +12,30 @@ const cellStyle = {
   cursor: "pointer"
 };
 
-const Cell = () => <div style={cellStyle}>?</div>;
+class Cell extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isOver: false,
+      content: "?"
+    }
+  }
+
+  toggleIsOver(event) {
+    this.setState({ isOver: !this.state.isOver })
+  }
+
+  render() {
+    return (
+      <div
+        onMouseOver={e => this.toggleIsOver(e)}
+        onMouseOut={e => this.toggleIsOver(e)}
+        onClick={() => this.props.onClickCell(this.props.cellIndex)}
+        style={{...cellStyle, backgroundColor: this.state.isOver ? "#ddd" : "white"}}
+      >{this.props.content}</div>
+    );
+  }
+}
 
 export default Cell;

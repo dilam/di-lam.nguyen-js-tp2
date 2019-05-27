@@ -9,8 +9,10 @@ const boardStyle = {
   gridAutoRows: "auto"
 };
 
-const Board = ({ cells = [] }) => (
-  <div style={boardStyle}>{cells.map(c => <Cell />)}</div>
+const Board = ({ cells = [], onClickCell = () => {} }) => (
+  <div style={boardStyle}>
+    {cells.map((c, index) => <Cell content={c} cellIndex={index} onClickCell={(cellIndex) => onClickCell(cellIndex)}/>)}
+  </div>
 );
 
 export default Board;

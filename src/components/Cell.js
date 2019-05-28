@@ -31,7 +31,7 @@ class Cell extends React.Component {
       <div
         onMouseOver={e => this.toggleIsOver(e)}
         onMouseOut={e => this.toggleIsOver(e)}
-        onClick={() => this.props.onClickCell(this.props.cellIndex)}
+        onClick={() => this.props.onClickCell()}
         style={{...cellStyle, backgroundColor: this.state.isOver ? "#ddd" : "white"}}
       >{this.props.content}</div>
     );
